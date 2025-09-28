@@ -1,0 +1,14 @@
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\bin\Debug\net9.0\playground_c-sharp.exe
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\bin\Debug\net9.0\playground_c-sharp.deps.json
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\bin\Debug\net9.0\playground_c-sharp.runtimeconfig.json
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\bin\Debug\net9.0\playground_c-sharp.dll
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\bin\Debug\net9.0\playground_c-sharp.pdb
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\playground_c-sharp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\playground_c-sharp.AssemblyInfoInputs.cache
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\playground_c-sharp.AssemblyInfo.cs
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\playground_c-sharp.csproj.CoreCompileInputs.cache
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\playground_c-sharp.dll
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\refint\playground_c-sharp.dll
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\playground_c-sharp.pdb
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\playground_c-sharp.genruntimeconfig.cache
+D:\Programacao\Projetos\csharp\playground_c-sharp\playground_c-sharp\obj\Debug\net9.0\ref\playground_c-sharp.dll
