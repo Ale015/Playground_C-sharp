@@ -52,9 +52,65 @@ namespace playground_c_sharp
 
         }
 
-        public static int[] SelectionSort(int[] list)
+
+        public static int? BuscaBinariaManual(int[] arr, int item)
         {
-            return list;
+
+            if ( arr == null || arr.Length < 1)
+            {
+                return null;
+            }
+
+            int[] array = Funcoes.SelectionSortInPlace(arr); 
+
+
+            int baixo = 0;
+            int alto = array.Length - 1;
+
+            while(baixo <= alto)
+            {
+
+                int meio = (baixo + alto) / 2;
+
+                int chute = array[meio];
+
+                if ( chute == item)
+                {
+                    return meio;
+                }
+
+                if (chute > item)
+                {
+                    alto = meio - 1;
+                } else if (chute < item)
+                {
+                    baixo = meio + 1;
+                }
+            }
+
+            return null;
+
+        }
+
+        public static int[]? SelectionSort(int[] array)
+        {
+            if (array == null || array.Length <= 0 )
+            {
+                return null;
+            }
+
+
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+
+            }
+
+        }
+
+
+        public static int[]? MergeSort(int[] array)
+        {
+
         }
 
     }
