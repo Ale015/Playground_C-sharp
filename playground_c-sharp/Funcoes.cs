@@ -409,6 +409,8 @@ namespace playground_c_sharp
             private int Size = 30;
             private List<KeyValuePair<K, V>>[] buckets;
 
+            private int paresSalvos = 0;
+
             public HashMap(int? size = null)
             {
                 if (size != null)
@@ -465,12 +467,86 @@ namespace playground_c_sharp
             private int GetIndex(K key)
             {
                 int hashCode = GenerateHashCode(key);
+
                 return hashCode % buckets.Length;
+
+
             }
+
+
+            private void Redimensionamento()
+            {
+                int arraySize = buckets.Length;
+
+                double fatorCarga = (double)paresSalvos / arraySize;
+
+                if (fatorCarga > 1.8)
+                {
+                    
+                    List<KeyValuePair<K,V>> todosElementos = new List<KeyValuePair<K,V>>();
+
+
+                    foreach (var bucket in buckets)
+                    {
+                        foreach(var pair in bucket)
+                        {
+                            todosElementos.Add(pair);
+                        }
+                    }
+
+
+                    int novoTamanhoBuckets = arraySize * 2;
+
+                    buckets = new List<KeyValuePair<K, V>>[novoTamanhoBuckets];
+
+                    for (int i = 0; i < novoTamanhoBuckets; i++)
+                    {
+                        buckets[i] = new List<KeyValuePair<K, V>>();
+                    }
+
+                    paresSalvos = 0;
+
+
+                    foreach (var elemento in todosElementos)
+                    {
+                        PutInterno(elemento.Key, elemento.Value);
+                    }
+
+
+                }
+
+
+            }
+
+
+            private void PutInterno(K key, V value)
+            {
+                int index = GetIndex(key);
+                var bucket = buckets[index];
+
+                for(int i = 0; i < bucket.Count; i++)
+                {
+                    if (EqualityComparer<K>.Default.Equals(bucket[i].Key, key))
+                    {
+                        bucket[i] = new KeyValuePair<K, V>(key, value);
+                        return;
+                    }
+                }
+
+                bucket.Add(new KeyValuePair<K, V>(key, value));
+                paresSalvos++;
+                return;
+
+            }
+
+
 
             // Método Put para adicionar/atualizar elementos
             public void Put(K key, V value)
             {
+
+                Redimensionamento();
+
                 int index = GetIndex(key);
                 var bucket = buckets[index];
 
@@ -486,6 +562,7 @@ namespace playground_c_sharp
 
                 // Se não existe, adiciona novo
                 bucket.Add(new KeyValuePair<K, V>(key, value));
+                paresSalvos++;
             }
 
             // Método Get
@@ -533,6 +610,7 @@ namespace playground_c_sharp
                     if (EqualityComparer<K>.Default.Equals(bucket[i].Key, key))
                     {
                         bucket.RemoveAt(i);
+                        paresSalvos--;
                         return true;
                     }
                 }
