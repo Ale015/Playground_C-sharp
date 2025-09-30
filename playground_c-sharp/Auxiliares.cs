@@ -51,8 +51,6 @@ namespace playground_c_sharp
             return list;
 
         }
-
-
         public static int? BuscaBinariaManual(int[] arr, int item)
         {
 
@@ -91,27 +89,45 @@ namespace playground_c_sharp
             return null;
 
         }
-
         public static int[]? SelectionSort(int[] array)
         {
             if (array == null || array.Length <= 0 )
             {
                 return null;
             }
+            
+            int t = array.Length - 1;
 
-
-            for (int i = 0; i < array.Length - 1; i++)
+            for (int i = 0; i < t; i++)
             {
+
+                int indiceMenor = i;
+
+
+                for (int j = i + 1; j < t + 1; j++)
+                {
+
+                    if (array[j] < array[indiceMenor])
+                    {
+                        indiceMenor = j;
+                    }
+
+
+                }
+
+
+                int temp = array[i];
+                array[i] = array[indiceMenor];
+                array[indiceMenor] = temp;
+
 
             }
 
+            return array;
+                        
         }
 
 
-        public static int[]? MergeSort(int[] array)
-        {
-
-        }
 
     }
 }

@@ -403,7 +403,59 @@ namespace playground_c_sharp
             return resultado;
 
         }
-        
+        public static int[]? QuickSort(int[] array)
+        {
+
+            if (array.Length < 2)
+            {
+                return array;
+            }
+
+            int pivo = array[0];
+
+            List<int> intsMenores = new List<int>();
+            List<int> intsMaiores = new List<int>();
+
+
+            for (int i = 1; i < array.Length; i++)
+            {
+
+                if (array[i] <= pivo)
+                {
+                    intsMenores.Add(array[i]);
+                }
+                else if (array[i] > pivo)
+                {
+                    intsMaiores.Add(array[i]);
+                }
+
+            }
+
+            int[] intMenoresArr = intsMenores.ToArray();
+            int[] intMaioresArr = intsMaiores.ToArray();
+
+            int[]? menoresOrdenados = QuickSort(intMenoresArr);
+            int[]? maioresOrdenados = QuickSort(intMaioresArr);
+
+            List<int> resultado = new List<int>();
+
+            if (menoresOrdenados != null)
+            {
+                resultado.AddRange(menoresOrdenados);
+            }
+
+            resultado.Add(pivo);
+
+            if (maioresOrdenados != null)
+            {
+                resultado.AddRange(maioresOrdenados);
+            }
+
+            return resultado.ToArray();
+
+
+        }
+
         public class HashMap<K, V>
         {
             private int Size = 30;
