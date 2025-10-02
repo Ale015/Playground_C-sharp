@@ -56,38 +56,88 @@ namespace playground_c_sharp
 
 
 
-        public Grafo? PesquisaLarguraProfissão(string profissao)
+        public Grafo? PesquisaLarguraProfissao(string profissao)
         {
-            List<Grafo> listaConexoes = new List<Grafo>();
+            var visitados = new HashSet<Grafo>();
+            var fila = new Queue<Grafo>();
 
-            listaConexoes.AddRange(ConectedNodes);
+            fila.Enqueue(this);
+            visitados.Add(this);
 
-            int limite = 1000;
-
-            for (int i = 0; i < listaConexoes.Count; i++)
+            while (fila.Count > 0)
             {
-                Grafo item = listaConexoes[i];
+                var atual = fila.Dequeue();
 
-                if (item.Profissao == profissao)
+                if (atual.Profissao.Equals(profissao, StringComparison.OrdinalIgnoreCase))
                 {
-                    return item;
+                    return atual;
                 }
 
-                if (item.ConectedNodes.Count > 0)
+                foreach (var conexao in atual.ConectedNodes)
                 {
-                    listaConexoes.AddRange(item.ConectedNodes);
+                    if (!visitados.Contains(conexao))
+                    {
+                        visitados.Add(conexao);
+                        fila.Enqueue(conexao);
+                    }
                 }
-                
-                
-                if(i >= limite)
-                {
-                    break;
-                }
+
             }
 
             return null;
-           
+
         }
+        public override string ToString()
+        {
+
+            return $"{Nome} ({Idade} anos) - {Profissao}";
+        }
+
+        public void ListarConexoes()
+        {
+            Console.WriteLine($"Conexões de {Nome}");
+            foreach (var item in ConectedNodes)
+            {
+                Console.WriteLine($"  - {item}");
+            }
+        }
+
+        // Versão simplificada
+
+        //public Grafo? PesquisaLarguraProfissão(string profissao)
+        //{
+        //    List<Grafo> listaConexoes = new List<Grafo>();
+
+        //    listaConexoes.AddRange(ConectedNodes);
+
+        //    int limite = 1000;
+
+        //    for (int i = 0; i < listaConexoes.Count; i++)
+        //    {
+        //        Grafo item = listaConexoes[i];
+
+        //        if (item.Profissao == profissao)
+        //        {
+        //            return item;
+        //        }
+
+        //        if (item.ConectedNodes.Count > 0)
+        //        {
+        //            listaConexoes.AddRange(item.ConectedNodes);
+        //        }
+                
+                
+        //        if(i >= limite)
+        //        {
+        //            break;
+        //        }
+        //    }
+
+        //    return null;
+           
+        //}
+
+
     }
 
 
